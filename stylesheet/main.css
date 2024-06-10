@@ -9203,3 +9203,8 @@ img.mfp-img {
 .social-icons li a:hover {
     color: #000; /* Cambia colore su hover, opzionale */
 }
+
+.site-footer {
+    max-height: 50px;
+}
+
