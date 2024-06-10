@@ -3243,8 +3243,6 @@ input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus,
     display: table-cell;
     vertical-align: top;
     width: 36px
-    border-radius: 50%; /* Rende l'immagine circolare */
-    object-fit: cover; /* Adatta l'immagine per coprire l'intero spazio senza distorsione */
 }
 
 @media (min-width: 57.8125em) {
