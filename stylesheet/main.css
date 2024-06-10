@@ -9204,6 +9204,35 @@ img.mfp-img {
     color: #000; /* Cambia colore su hover, opzionale */
 }
 
+#popup-zuccante {
+    display: none;
+    position: absolute;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#popup-zuccante a {
+    color: black;
+    text-decoration: none;
+}
+
+#popup-unive {
+    display: none;
+    position: absolute;
+    background-color: #fefefe;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 300px;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+#popup-unive a {
+    color: black;
+    text-decoration: none;
+}
 .site-footer {
     max-height: 100px;
 }
