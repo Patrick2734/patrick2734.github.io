@@ -9188,3 +9188,18 @@ img.mfp-img {
         display: none
     }
 }
+
+.social-icons li {
+    list-style-type: none; /* Rimuove i bullet points standard */
+    padding-left: 0; /* Assicura che non ci siano padding a sinistra */
+    margin-left: 0; /* Assicura che non ci siano margini a sinistra */
+}
+.social-icons li a {
+    text-decoration: none; /* Rimuove l'underline del link */
+    display: flex;
+    align-items: center; /* Centra verticalmente l'icona e il testo */
+    color: inherit; /* Mantiene il colore del link */
+}
+.social-icons li a:hover {
+    color: #000; /* Cambia colore su hover, opzionale */
+}
