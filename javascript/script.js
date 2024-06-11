@@ -1,28 +1,30 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var navLinks = document.querySelectorAll('.masthead__menu-item a');
-    var mobileNavToggle = document.getElementById('mobile-nav-toggle');
+// Funzione per ottenere la data e l'ora corrente
+function getDataOraCorrente() {
+    var dataOra = new Date(); // Ottiene la data e l'ora corrente
+    var giorno = dataOra.getDate(); // Ottiene il giorno del mese (da 1 a 31)
+    var mese = dataOra.getMonth() + 1; // Ottiene il mese (da 0 a 11, quindi +1 per avere il mese corretto)
+    var anno = dataOra.getFullYear(); // Ottiene l'anno
+    var ore = dataOra.getHours(); // Ottiene le ore (da 0 a 23)
+    var minuti = dataOra.getMinutes(); // Ottiene i minuti (da 0 a 59)
 
-    mobileNavToggle.addEventListener('click', function() {
-        var linksCollapse = document.querySelector('.masthead__menu');
-        linksCollapse.classList.toggle('active');
-    });
+    // Aggiusta i valori per i giorni, mesi e minuti inferiori a 10
+    giorno = giorno < 10? "0" + giorno : giorno;
+    mese = mese < 10? "0" + mese : mese;
+    minuti = minuti < 10? "0" + minuti : minuti;
 
-    navLinks.forEach(function(link) {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            var currentActiveNav = document.querySelector('.masthead__menu-item.active a');
-            var currentLink = this;
+    // Formatta la data e l'ora
+    var dataFormattata = giorno + "/" + mese + "/" + anno + " - " + ore + ":" + minuti;
 
-            if (currentActiveNav) {
-                currentActiveNav.classList.remove('active');
-            }
+    return dataFormattata;
+}
 
-            if (window.innerWidth <= 768 &&!this.classList.contains('active')) {
-                link.classList.add('active');
-                e.preventDefault();
-                window.location.href = '#';
-            }
-        });
-    });
-});
+// Funzione per mostrare la data e l'ora nell'HTML
+function mostraDataOra() {
+    var dataOraElemento = document.getElementById("dataOra");
+    var dataOraCorrente = getDataOraCorrente();
+    dataOraElemento.innerHTML = dataOraCorrente;
+}
+
+// Chiama la funzione per mostrare la data e l'ora quando la pagina viene caricata
+mostraDataOra();
 
