@@ -4,16 +4,17 @@ function getDataOraCorrente() {
     var giorno = dataOra.getDate(); // Ottiene il giorno del mese (da 1 a 31)
     var mese = dataOra.getMonth() + 1; // Ottiene il mese (da 0 a 11, quindi +1 per avere il mese corretto)
     var anno = dataOra.getFullYear(); // Ottiene l'anno
-    var ore = dataOra.getHours(); // Ottiene le ore (da 0 a 23)
-    var minuti = dataOra.getMinutes(); // Ottiene i minuti (da 0 a 59)
+    //var ore = dataOra.getHours(); // Ottiene le ore (da 0 a 23)
+    //var minuti = dataOra.getMinutes(); // Ottiene i minuti (da 0 a 59)
 
     // Aggiusta i valori per i giorni, mesi e minuti inferiori a 10
     giorno = giorno < 10? "0" + giorno : giorno;
     mese = mese < 10? "0" + mese : mese;
-    minuti = minuti < 10? "0" + minuti : minuti;
+    //minuti = minuti < 10? "0" + minuti : minuti;
 
     // Formatta la data e l'ora
-    var dataFormattata = giorno + "/" + mese + "/" + anno + " - " + ore + ":" + minuti;
+    // var dataFormattata = giorno + "/" + mese + "/" + anno + " - " + ore + ":" + minuti;
+    var dataFormattata = giorno + "/" + mese + "/" + anno;
 
     return dataFormattata;
 }
