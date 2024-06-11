@@ -29,6 +29,23 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<link rel="stylesheet" href="https://patrick2734.github.io/stylesheet/main.css">
+		<style>
+			.testo {
+			    position: relative;
+			    display: inline-block;
+			}
+			.popup {
+			    display: none;
+			    position: absolute;
+			    top: 20px;
+			    left: 50%;
+			    transform: translateX(-50%);
+			    padding: 10px;
+			    background-color: #f1f1f1;
+			    border: 1px solid #ccc;
+			    border-radius: 5px;
+			}
+		</style>
 	</head>
 	<body>
 		<div class="masthead">
@@ -171,6 +188,21 @@
 								<strong>personal email address:</strong> patrick1fabbiani@gmail.com
 							</li>
 						</ul>
+						<script>
+							const testo = document.querySelector('.testo');
+							const popup = document.querySelector('.popup');
+						
+							testo.addEventListener('mouseover', function() {
+							    popup.style.display = 'block';
+							});
+						
+							testo.addEventListener('mouseout', function() {
+							    popup.style.display = 'none';
+							});
+						</script>
+						<div class="testo">Passa il mouse sopra questa parola
+							<div class="popup">Questa è una breve descrizione.</div>
+						</div>
 					</section>
 				</div>
 			</article>
