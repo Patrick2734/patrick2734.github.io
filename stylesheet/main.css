@@ -3178,8 +3178,8 @@ input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus,
     content: "";
     display: table
 }
-
-@media (min-width: 57.8125em) {
+/*@media (min-width: 57.8125em) {*/
+@media (max-width: 99.9999em) {
     .sidebar {
         width:15.2542372881%;
         float: left;
