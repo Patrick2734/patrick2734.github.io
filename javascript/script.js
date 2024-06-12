@@ -32,7 +32,7 @@ function mostraMessaggioDiBenvenuto() {
     alert("Benvenuto sulla mia pagina. Sono Patrick Fabbiani");
 }
 // Chiama la funzione quando la pagina viene caricata
-window.onload = mostraMessaggioDiBenvenuto;
+window.onload = mostraMessaggioDiBenvenuto();
 
 // Funzione per eseguire lo scroll automatico
 function scrollToTop() {
@@ -42,4 +42,4 @@ function scrollToTop() {
     });
 }
 // Chiama la funzione quando la pagina viene caricata
-window.onload = scrollToTop;
+window.onload = scrollToTop();
