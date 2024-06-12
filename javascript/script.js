@@ -27,13 +27,6 @@ function mostraDataOra() {
 // Chiama la funzione per mostrare la data e l'ora quando la pagina viene caricata
 mostraDataOra();
 
-// Funzione per mostrare un messaggio di benvenuto
-function mostraMessaggioDiBenvenuto() {
-    alert("Benvenuto sulla mia pagina. Sono Patrick Fabbiani");
-}
-// Chiama la funzione quando la pagina viene caricata
-window.onload = mostraMessaggioDiBenvenuto();
-
 // Funzione per eseguire lo scroll automatico
 function scrollToTop() {
     window.scrollTo({
