@@ -3178,7 +3178,16 @@ input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus,
     content: "";
     display: table
 }
-@media (min-width: 57.8125em) {
+@media (max-width: 79.9999em) { /* Cambia questo valore in base alle tue esigenze */
+   .sidebar__right {
+        position: relative; /* Mantieni questa proprietà se necessaria per il layout */
+        float: right; /* Mantieni questa proprietà se necessaria per il layout */
+        width: 20%; /* Imposta una larghezza appropriata per il tuo design */
+        margin-left: 2.5423728814%; /* Mantieni questa proprietà se necessaria per il layout */
+        z-index: 10; /* Mantieni questa proprietà se necessaria per il layout */
+    }
+}
+/*@media (min-width: 57.8125em) {
     .sidebar {
         width:15.2542372881%;
         float: left;
@@ -3191,7 +3200,7 @@ input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus,
     .sidebar:hover {
         opacity: 1
     }
-}
+}*/
 
 @media (min-width: 80em) {
     .sidebar {
