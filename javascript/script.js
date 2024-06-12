@@ -18,14 +18,28 @@ function getDataOraCorrente() {
 
     return dataFormattata;
 }
-
 // Funzione per mostrare la data e l'ora nell'HTML
 function mostraDataOra() {
     var dataOraElemento = document.getElementById("dataOra");
     var dataOraCorrente = getDataOraCorrente();
     dataOraElemento.innerHTML = dataOraCorrente;
 }
-
 // Chiama la funzione per mostrare la data e l'ora quando la pagina viene caricata
 mostraDataOra();
 
+// Funzione per mostrare un messaggio di benvenuto
+function mostraMessaggioDiBenvenuto() {
+    alert("Benvenuto sulla mia pagina. Sono Patrick Fabbiani");
+}
+// Chiama la funzione quando la pagina viene caricata
+window.onload = mostraMessaggioDiBenvenuto;
+
+// Funzione per eseguire lo scroll automatico
+function scrollToTop() {
+    window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+    });
+}
+// Chiama la funzione quando la pagina viene caricata
+window.onload = scrollToTop;
