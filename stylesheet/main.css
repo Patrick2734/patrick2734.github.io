@@ -3223,13 +3223,23 @@ input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus,
     margin-bottom: 1em
 }
 
-@media (min-width: 57.8125em) {
+/*@media (min-width: 57.8125em) {
     .sidebar__right {
         position:relative;
         float: right;
         width: 0px;
         margin-left: 2.5423728814%;
         z-index: 10
+    }
+}*/
+
+@media (max-width: 79.9999em) { /* Cambia questo valore in base alle tue esigenze */
+   .sidebar__right {
+        position: relative; /* Mantieni questa proprietà se necessaria per il layout */
+        float: right; /* Mantieni questa proprietà se necessaria per il layout */
+        width: 20%; /* Imposta una larghezza appropriata per il tuo design */
+        margin-left: 2.5423728814%; /* Mantieni questa proprietà se necessaria per il layout */
+        z-index: 10; /* Mantieni questa proprietà se necessaria per il layout */
     }
 }
 
