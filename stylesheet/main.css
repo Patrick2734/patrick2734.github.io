@@ -2652,6 +2652,32 @@ input[type="file"]:focus,input[type="radio"]:focus,input[type="checkbox"]:focus,
     }
 }
 
+/* Adjustments for mobile devices */
+@media (max-width: 600px) {
+   .masthead__menu {
+        display: none;
+    }
+   .masthead__menu-item--lg {
+        display: block;
+    }
+}
+
+/* Adjustments for tablets and larger screens */
+@media (min-width: 601px) and (max-width: 1024px) {
+    /* Example: Adjust sidebar width */
+   .sidebar {
+        width: 100%;
+    }
+}
+
+/* Adjustments for desktops and larger screens */
+@media (min-width: 1025px) {
+    /* Example: Reset sidebar width */
+   .sidebar {
+        width: 25%;
+    }
+}
+
 .page__share-title {
     margin-bottom: 10px;
     font-size: .75em;
