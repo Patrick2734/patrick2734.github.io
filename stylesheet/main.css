@@ -2672,7 +2672,7 @@ Adjustments for tablets and larger screens
 
 Adjustments for desktops and larger screens
 @media (min-width: 1025px) {
-    /* Example: Reset sidebar width */
+    Example: Reset sidebar width
    .sidebar {
         width: 25%;
     }
