@@ -36,3 +36,27 @@ function scrollToTop() {
 }
 // Chiama la funzione quando la pagina viene caricata
 window.onload = scrollToTop();
+
+document.addEventListener('DOMContentLoaded', function() {
+    var followButton = document.getElementById('followButton');
+    var socialIconsDropdown = document.getElementById('socialIconsDropdown');
+
+    // Toggle dropdown visibility
+    followButton.addEventListener('click', function() {
+        socialIconsDropdown.classList.toggle('show');
+    });
+
+    // Close dropdown if clicked outside
+    window.onclick = function(event) {
+        if (!event.target.matches('#followButton')) {
+            var dropdowns = document.getElementsByClassName("social-icons show");
+            var i;
+            for (i = 0; i < dropdowns.length; i++) {
+                var openDropdown = dropdowns[i];
+                if (openDropdown.classList.contains('show')) {
+                    openDropdown.classList.remove('show');
+                }
+            }
+        }
+    };
+});
