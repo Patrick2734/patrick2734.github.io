@@ -34,6 +34,8 @@ function scrollToTop() {
         behavior: 'smooth'
     });
 }
-// Chiama la funzione quando la pagina viene caricata
-window.onload = scrollToTop();
 
+// Chiama la funzione quando la pagina viene caricata
+window.onload = function() {
+    scrollToTop();
+};
