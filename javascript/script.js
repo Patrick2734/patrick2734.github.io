@@ -38,10 +38,9 @@ function scrollToTop() {
 window.onload = scrollToTop();
 
 document.addEventListener('DOMContentLoaded', function() {
-    var followButton = document.getElementById('followButton');
-    var socialIconsDropdown = document.getElementById('socialIconsDropdown');
+    var followButton = document.querySelector('.btn.btn--inverse'); // Adjusted selector
+    var socialIconsDropdown = document.querySelector('.author__urls.social-icons'); // Adjusted selector
 
-    // Toggle dropdown visibility
     followButton.addEventListener('click', function() {
         socialIconsDropdown.style.display = socialIconsDropdown.style.display === 'block'? 'none' : 'block';
     });
