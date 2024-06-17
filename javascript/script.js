@@ -43,20 +43,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Toggle dropdown visibility
     followButton.addEventListener('click', function() {
-        socialIconsDropdown.classList.toggle('show');
+        socialIconsDropdown.style.display = socialIconsDropdown.style.display === 'block'? 'none' : 'block';
     });
-
-    // Close dropdown if clicked outside
-    window.onclick = function(event) {
-        if (!event.target.matches('#followButton')) {
-            var dropdowns = document.getElementsByClassName("social-icons show");
-            var i;
-            for (i = 0; i < dropdowns.length; i++) {
-                var openDropdown = dropdowns[i];
-                if (openDropdown.classList.contains('show')) {
-                    openDropdown.classList.remove('show');
-                }
-            }
-        }
-    };
 });
