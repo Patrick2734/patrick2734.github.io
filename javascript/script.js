@@ -37,11 +37,3 @@ function scrollToTop() {
 // Chiama la funzione quando la pagina viene caricata
 window.onload = scrollToTop();
 
-document.addEventListener('DOMContentLoaded', function() {
-    var followButton = document.querySelector('.btn.btn--inverse'); // Adjusted selector
-    var socialIconsDropdown = document.querySelector('.author__urls.social-icons'); // Adjusted selector
-
-    followButton.addEventListener('click', function() {
-        socialIconsDropdown.style.display = socialIconsDropdown.style.display === 'block'? 'none' : 'block';
-    });
-});
