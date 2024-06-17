@@ -3364,6 +3364,22 @@ Adjustments for desktops and larger screens
     }
 }
 
+/// ADDED
+.author__urls-wrapper ul.social-icons {
+    display: none; /* Initially hide the dropdown */
+    position: absolute;
+    background-color: #fff; /* Background color of the dropdown */
+    min-width: 160px; /* Minimum width */
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2); /* Optional: Adds shadow for depth */
+    padding: 12px 16px; /* Padding inside the dropdown */
+    border-radius: 4px; /* Rounded corners */
+    z-index: 1; /* Ensure it's above other content */
+}
+.author__urls-wrapper ul.social-icons.show { /* Style for when the dropdown is shown */
+    display: block;
+}
+/// ADDED
+
 .author__urls {
     display: none;
     position: absolute;
