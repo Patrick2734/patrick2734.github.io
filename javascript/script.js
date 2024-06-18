@@ -28,7 +28,7 @@ function mostraDataOra() {
 mostraDataOra();
 
 // Funzione per eseguire lo scroll automatico
-function scrollToTop() {
+/*function scrollToTop() {
     window.scrollTo({
         top: 0,
         behavior: 'smooth'
@@ -39,4 +39,7 @@ function scrollToTop() {
 //window.onload = function() {
 $( document ).ready(function() {
     scrollToTop();
-};
+};*/
+$(document).ready(function(){
+    $(this).scrollTop(0);
+});
