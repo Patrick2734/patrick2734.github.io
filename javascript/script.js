@@ -40,6 +40,4 @@ mostraDataOra();
 $( document ).ready(function() {
     scrollToTop();
 };*/
-$(document).ready(function(){
-    $(this).scrollTop(0);
-});
+
