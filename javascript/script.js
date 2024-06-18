@@ -36,6 +36,7 @@ function scrollToTop() {
 }
 
 // Chiama la funzione quando la pagina viene caricata
-window.onload = function() {
+//window.onload = function() {
+$( document ).ready(function() {
     scrollToTop();
 };
