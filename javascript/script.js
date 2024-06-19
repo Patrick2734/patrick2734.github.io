@@ -1,4 +1,4 @@
-// Funzione per ottenere la data e l'ora corrente
+/* Funzione per ottenere la data e l'ora corrente
 function getDataOraCorrente() {
     var dataOra = new Date(); // Ottiene la data e l'ora corrente
     var giorno = dataOra.getDate(); // Ottiene il giorno del mese (da 1 a 31)
@@ -25,7 +25,7 @@ function mostraDataOra() {
     dataOraElemento.innerHTML = dataOraCorrente;
 }
 // Chiama la funzione per mostrare la data e l'ora quando la pagina viene caricata
-mostraDataOra();
+mostraDataOra();*/
 
 // Funzione per eseguire lo scroll automatico
 /*function scrollToTop() {
