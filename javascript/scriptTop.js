@@ -5,9 +5,13 @@ function scrollToTop() {
     });
 }
 
-$(document).ready(function(){
+/*$(document).ready(function(){
     $(this).scrollTop(0);
-});
+});*/
+
+$(document).ready(function(){
+    scrollToTop();
+}
 
 // Attach the click event listener to the button
 document.querySelector('.return-to-top').addEventListener('click', scrollToTop);
