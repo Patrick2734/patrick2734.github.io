@@ -9,9 +9,5 @@ function scrollToTop() {
     $(this).scrollTop(0);
 });*/
 
-$(document).ready(function(){
-    scrollToTop();
-}
-
 // Attach the click event listener to the button
 document.querySelector('.return-to-top').addEventListener('click', scrollToTop);
