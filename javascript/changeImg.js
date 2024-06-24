@@ -9,6 +9,6 @@ function changeImage() {
     } else {
         index++;
     }
-    setTimeout(changeImage, 5000); // Cambia l'immagine ogni 5 secondi
+    setTimeout(changeImage, 10000); // Cambia l'immagine ogni 5 secondi
 }
 window.onload = changeImage;
