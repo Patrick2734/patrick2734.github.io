@@ -1,37 +1,19 @@
-body {
-    font-family: Arial, sans-serif;
-}
-
-.author__urls-wrapper {
-    max-width: 600px;
-    margin: 0 auto;
-}
-
-.social-icons {
-    list-style-type: none;
-    padding: 0;
-}
-
-.link-container {
-    position: relative;
-    display: inline-block;
-}
-
 .preview-popup {
     display: none;
     position: absolute;
     top: 30px;
     left: 0;
-    width: 200px;
+    width: 300px;
+    height: 200px;
     border: 1px solid #ddd;
     background: #fff;
     z-index: 10;
     box-shadow: 0 4px 8px rgba(0,0,0,0.1);
 }
 
-.preview-popup img {
+.preview-popup iframe {
     width: 100%;
-    height: auto;
+    height: 100%;
 }
 
 .link-container:hover .preview-popup {
