@@ -1,3 +1,3 @@
-# patrick2734.github.io - <a href="patrick2734.github.io">Personal webpage</a>
+# patrick2734.github.io - <a href="https://patrick2734.github.io/index.html">Personal webpage</a>
 
 This is dynamic personal webpage designed to showcase my passion for technology and innovation. Through a blend of responsive design and intuitive navigation, I offer insights into my projects, professional journey, and the latest trends in tech. Explore my portfolio to discover how I leverage cutting-edge technologies to solve real-world problems, and stay tuned to my blog for deep dives into software development, design principles, and industry insights. Whether you're a fellow developer seeking inspiration or a potential employer looking for talent, "patrick2734.github.io" serves as a gateway to my professional world.
