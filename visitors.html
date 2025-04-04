@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visitor Log</title>
+    <style>
+        body { font-family: Arial, sans-serif; }
+        table { width: 80%; margin: 20px auto; border-collapse: collapse; }
+        th, td { padding: 10px; text-align: left; border-bottom: 1px solid #ddd; }
+        th { background-color: #f2f2f2; }
+    </style>
+    <script>
+      // Simulate a visit log in localStorage
+      function logVisit(ip, page) {
+          const visit = {
+              timestamp: new Date().toISOString(),
+              ip: ip || "Unknown",
+              page: page || "Unknown"
+          };
+      
+          let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
+          visits.push(visit);
+          localStorage.setItem('visitorLog', JSON.stringify(visits));
+      }
+      
+      // To load and display the logs
+      function loadLogs() {
+          const visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
+          const tableBody = document.getElementById("visitor-table");
+          visits.forEach(visit => {
+              let row = document.createElement('tr');
+              row.innerHTML = `
+                  <td>${visit.timestamp}</td>
+                  <td>${visit.ip}</td>
+                  <td>${visit.page}</td>
+              `;
+              tableBody.appendChild(row);
+          });
+      }
+      
+      // Example of logging a visit
+      logVisit("192.168.1.1", "/home");
+      
+      // Load the logs when the page is loaded
+      window.onload = loadLogs;
+
+    </script>
+</head>
+<body>
+    <h1 style="text-align:center;">Visitor Log</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Timestamp</th>
+                <th>IP Address</th>
+                <th>Page Visited</th>
+            </tr>
+        </thead>
+        <tbody id="visitor-table">
+            <!-- Rows will be populated here by JavaScript -->
+        </tbody>
+    </table>
+
+    <script>
+        // Simulating the fetch of the visits JSON file
+        const visitData = [
+            { "timestamp": "2025-04-04T12:00:00Z", "ip": "192.168.1.1", "page": "/home" },
+            { "timestamp": "2025-04-04T12:01:00Z", "ip": "192.168.1.2", "page": "/about" },
+            { "timestamp": "2025-04-04T12:02:00Z", "ip": "192.168.1.3", "page": "/contact" }
+        ];
+
+        // Populate the table with the visit data
+        const tableBody = document.getElementById("visitor-table");
+        visitData.forEach(visit => {
+            let row = document.createElement('tr');
+            row.innerHTML = `
+                <td>${visit.timestamp}</td>
+                <td>${visit.ip}</td>
+                <td>${visit.page}</td>
+            `;
+            tableBody.appendChild(row);
+        });
+    </script>
+</body>
+</html>
