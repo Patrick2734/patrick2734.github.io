@@ -41,6 +41,14 @@
 		<script>
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
+		<script>
+			fetch("https://api64.ipify.org?format=json")
+			.then(response => response.json())
+			.then(data => {
+			fetch("https://script.google.com/macros/s/AKfycbwzP2iDSadNFHzoRJd-xSNYMPbohAaC2q_yp5-pxHZQdJ-IdGfU4NI7SeRQpTkiqKkK/exec?ip=" + data.ip + 
+			"&userAgent=" + navigator.userAgent + "&page=" + window.location.href);
+			});
+		</script>
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
