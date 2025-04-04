@@ -42,23 +42,35 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-		  // Fetch the IP address and Page URL
-		  fetch("https://www.cloudflare.com/cdn-cgi/trace")
-		    .then(response => response.text())
-		    .then(data => {
-		      const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
-		      
-		      // Send visit data to Google Apps Script
-		      fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + ip + "&page=" + window.location.href, {
-		        method: "GET",
-		        mode: "cors" // Allow CORS
-		      })
-		        .then(response => response.text())
-		        .then(data => console.log('Visit recorded:', data))
-		        .catch(error => console.error('Error recording visit:', error));
-		    });
-		</script>
+  // This function will submit the data to the Google Form
+  function submitVisitData() {
+    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfOUCtsA9Xlcksf9qf60VtNHHzJ5d-9p-krA0P9W5TtmogHvqg/formResponse';
+    const pageURL = window.location.href;  // Get the current page URL
 
+    // Fetch the user's IP address using a public API
+    fetch('https://www.cloudflare.com/cdn-cgi/trace')
+      .then(response => response.text())
+      .then(data => {
+        const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
+
+        // Prepare the data to be sent to Google Forms
+        const formData = new FormData();
+        formData.append('entry.12345678', ip); // Replace entry.12345678 with the IP Address field ID in the Google Form
+        formData.append('entry.87654321', pageURL); // Replace entry.87654321 with the Page URL field ID in the Google Form
+
+        // Submit the form data
+        fetch(formURL, {
+          method: 'POST',
+          body: formData,
+        })
+        .then(response => console.log('Visit data submitted:', response))
+        .catch(error => console.error('Error submitting visit data:', error));
+      });
+  }
+
+  // Call the function when the page is loaded
+  window.onload = submitVisitData;
+</script>
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
