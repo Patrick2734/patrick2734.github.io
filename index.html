@@ -42,24 +42,18 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-		  fetch("https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" +
-		    encodeURIComponent("Unknown") +
-		    "&userAgent=" + encodeURIComponent(navigator.userAgent) +
-		    "&page=" + encodeURIComponent(window.location.href), {
-		    method: "GET"
-		  })
-		  .then(response => {
-		    if (!response.ok) {
-		      throw new Error('Errore nella richiesta: ' + response.status);
-		    }
-		    return response.json();
-		  })
-		  .then(data => {
-		    console.log('Dati inviati con successo:', data);
-		  })
-		  .catch(error => {
-		    console.error('Errore nella richiesta:', error);
-		  });
+		  // Fetch the IP address and Page URL
+		  fetch("https://www.cloudflare.com/cdn-cgi/trace")
+		    .then(response => response.text())
+		    .then(data => {
+		      const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
+		      
+		      // Send visit data to Google Apps Script
+		      fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + ip + "&page=" + window.location.href)
+		        .then(response => response.text())
+		        .then(data => console.log('Visit recorded:', data))
+		        .catch(error => console.error('Error recording visit:', error));
+		    });
 		</script>
 	</head>
 	<body style="margin-bottom: 0px;">
