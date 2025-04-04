@@ -41,44 +41,6 @@
 		<script>
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
-		<script>
-		  // Function to send the visit data
-		  function submitVisitData() {
-		    const pageURL = window.location.href;  // Get the current page URL
-		
-		    // Fetch the user's IP address using a public API (you can change this if needed)
-		    fetch('https://www.cloudflare.com/cdn-cgi/trace')
-		      .then(response => response.text())
-		      .then(data => {
-		        const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1]; // Extract IP
-		
-		        // Prepare the data to be sent to Google Apps Script
-		        const scriptURL = 'YOUR_GOOGLE_APPS_SCRIPT_URL'; // Replace with your Apps Script web app URL
-		        const urlParams = new URLSearchParams({
-		          ip: ip,
-		          page: pageURL
-		        });
-		
-		        // Send the data via a GET request to Google Apps Script
-		        fetch(scriptURL + '?' + urlParams.toString())
-		          .then(response => {
-		            if (!response.ok) {
-		              throw new Error('Request failed');
-		            }
-		            return response.text();
-		          })
-		          .then(responseText => console.log('Visit recorded:', responseText))
-		          .catch(error => console.error('Error:', error));
-		      });
-		  }
-		
-		  // Call the function to submit the visit data
-		  window.onload = submitVisitData;
-	    	</script>
-
-  // Call the function when the page is loaded
-  window.onload = submitVisitData;
-</script>
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
