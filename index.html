@@ -49,12 +49,16 @@
 		      const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
 		      
 		      // Send visit data to Google Apps Script
-		      fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + ip + "&page=" + window.location.href)
+		      fetch("https://script.google.com/macros/s/https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + ip + "&page=" + window.location.href, {
+		        method: "GET",
+		        mode: "cors" // Allow CORS
+		      })
 		        .then(response => response.text())
 		        .then(data => console.log('Visit recorded:', data))
 		        .catch(error => console.error('Error recording visit:', error));
 		    });
 		</script>
+
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
