@@ -11,40 +11,48 @@
         th { background-color: #f2f2f2; }
     </style>
     <script>
-      // Simulate a visit log in localStorage
-      function logVisit(ip, page) {
-          const visit = {
-              timestamp: new Date().toISOString(),
-              ip: ip || "Unknown",
-              page: page || "Unknown"
-          };
-      
-          let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
-          visits.push(visit);
-          localStorage.setItem('visitorLog', JSON.stringify(visits));
-      }
-      
-      // To load and display the logs
-      function loadLogs() {
-          const visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
-          const tableBody = document.getElementById("visitor-table");
-          visits.forEach(visit => {
-              let row = document.createElement('tr');
-              row.innerHTML = `
-                  <td>${visit.timestamp}</td>
-                  <td>${visit.ip}</td>
-                  <td>${visit.page}</td>
-              `;
-              tableBody.appendChild(row);
-          });
-      }
-      
-      // Example of logging a visit
-      // logVisit("192.168.1.1", "/home");
-      
-      // Load the logs when the page is loaded
-      window.onload = loadLogs;
+        // Simulate a visit log in localStorage
+        function logVisit(ip, page) {
+            const visit = {
+                timestamp: new Date().toISOString(),
+                ip: ip || "Unknown",
+                page: page || "Unknown"
+            };
 
+            let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
+            visits.push(visit);
+            localStorage.setItem('visitorLog', JSON.stringify(visits));
+        }
+
+        // To load and display the logs
+        function loadLogs() {
+            const visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
+            const tableBody = document.getElementById("visitor-table");
+            visits.forEach(visit => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${visit.timestamp}</td>
+                    <td>${visit.ip}</td>
+                    <td>${visit.page}</td>
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        // Function to simulate retrieving the IP address (you would need a server-side solution for real IP)
+        function getIP() {
+            // Since we can't retrieve the real IP with JavaScript alone on the client side,
+            // we'll simulate an IP address for the purpose of this demo.
+            return "192.168.1.1"; // Placeholder for the actual IP
+        }
+
+        // Log a visit to https://patrick2734.github.io/
+        window.onload = function() {
+            // Example: Log a visit to a specific page on https://patrick2734.github.io/
+            const currentPage = window.location.pathname;
+            logVisit(getIP(), "https://patrick2734.github.io" + currentPage); // Track visits to the site
+            loadLogs(); // Display the logs in the table
+        };
     </script>
 </head>
 <body>
@@ -61,26 +69,5 @@
             <!-- Rows will be populated here by JavaScript -->
         </tbody>
     </table>
-
-    <script>
-        // Simulating the fetch of the visits JSON file
-        /*const visitData = [
-            { "timestamp": "2025-04-04T12:00:00Z", "ip": "192.168.1.1", "page": "/home" },
-            { "timestamp": "2025-04-04T12:01:00Z", "ip": "192.168.1.2", "page": "/about" },
-            { "timestamp": "2025-04-04T12:02:00Z", "ip": "192.168.1.3", "page": "/contact" }
-        ];*/
-
-        // Populate the table with the visit data
-        const tableBody = document.getElementById("visitor-table");
-        visitData.forEach(visit => {
-            let row = document.createElement('tr');
-            row.innerHTML = `
-                <td>${visit.timestamp}</td>
-                <td>${visit.ip}</td>
-                <td>${visit.page}</td>
-            `;
-            tableBody.appendChild(row);
-        });
-    </script>
 </body>
 </html>
