@@ -42,26 +42,25 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-  fetch("https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" +
-    encodeURIComponent("Unknown") +
-    "&userAgent=" + encodeURIComponent(navigator.userAgent) +
-    "&page=" + encodeURIComponent(window.location.href), {
-    method: "GET"
-  })
-  .then(response => {
-    if (response.ok) {
-      return response.json();
-    } else {
-      throw new Error('Errore nella richiesta: ' + response.status);
-    }
-  })
-  .then(data => {
-    console.log('Dati inviati con successo:', data);
-  })
-  .catch(error => {
-    console.error('Errore nella richiesta:', error);
-  });
-</script>
+		  fetch("https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" +
+		    encodeURIComponent("Unknown") +
+		    "&userAgent=" + encodeURIComponent(navigator.userAgent) +
+		    "&page=" + encodeURIComponent(window.location.href), {
+		    method: "GET"
+		  })
+		  .then(response => {
+		    if (!response.ok) {
+		      throw new Error('Errore nella richiesta: ' + response.status);
+		    }
+		    return response.json();
+		  })
+		  .then(data => {
+		    console.log('Dati inviati con successo:', data);
+		  })
+		  .catch(error => {
+		    console.error('Errore nella richiesta:', error);
+		  });
+		</script>
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
