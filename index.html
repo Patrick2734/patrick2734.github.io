@@ -42,14 +42,17 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-		  fetch("https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + "Unknown" + "&userAgent=" + navigator.userAgent + "&page=" + window.location.href, {
-		      method: "GET",
-		      mode: "no-cors"  // Disabilita il CORS per non aspettare una risposta
-		  })
-		  .then(response => {
-		      console.log('Dati inviati con successo');
-		  })
-		  .catch(error => console.error('Errore nella richiesta:', error));
+			fetch('https://cors-anywhere.herokuapp.com/https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec', {
+			    method: 'GET',
+			    params: {
+			        ip: "Unknown",
+			        userAgent: navigator.userAgent,
+			        page: window.location.href
+			    }
+			})
+			.then(response => response.json())
+			.then(data => console.log('Dati inviati con successo'))
+			.catch(error => console.error('Errore:', error));
 		</script>
 	</head>
 	<body style="margin-bottom: 0px;">
