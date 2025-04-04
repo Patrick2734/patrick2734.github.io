@@ -44,17 +44,15 @@
 		<script>
 		  fetch("https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + 
 		            "Unknown" +  // Puoi sostituire con una funzione per ottenere l'IP
-		            "&userAgent=" + navigator.userAgent + "&page=" + window.location.href)
-		    .then(response => {
-		        if (!response.ok) {
-		            throw new Error('Errore nella richiesta');
-		        }
-		        return response.text();
-		    })
-		    .then(responseData => console.log('Dati inviati con successo:', responseData))
-		    .catch(error => console.error('Errore nella richiesta:', error));
+		            "&userAgent=" + navigator.userAgent + "&page=" + window.location.href, {
+		      method: "GET",
+		      mode: "no-cors"  // Disabilita il CORS per non aspettare una risposta
+		  })
+		  .then(response => {
+		      console.log('Dati inviati con successo');
+		  })
+		  .catch(error => console.error('Errore nella richiesta:', error));
 		</script>
-
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
