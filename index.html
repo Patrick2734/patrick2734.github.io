@@ -42,31 +42,34 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-  // This function will submit the data to the Google Form
-  function submitVisitData() {
-    const formURL = 'https://docs.google.com/forms/d/e/1FAIpQLSfOUCtsA9Xlcksf9qf60VtNHHzJ5d-9p-krA0P9W5TtmogHvqg/formResponse';
-    const pageURL = window.location.href;  // Get the current page URL
-
-    // Fetch the user's IP address using a public API
-    fetch('https://www.cloudflare.com/cdn-cgi/trace')
-      .then(response => response.text())
-      .then(data => {
-        const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
-
-        // Prepare the data to be sent to Google Forms
-        const formData = new FormData();
-        formData.append('entry.12345678', ip); // Replace entry.12345678 with the IP Address field ID in the Google Form
-        formData.append('entry.87654321', pageURL); // Replace entry.87654321 with the Page URL field ID in the Google Form
-
-        // Submit the form data
-        fetch(formURL, {
-          method: 'POST',
-          body: formData,
-        })
-        .then(response => console.log('Visit data submitted:', response))
-        .catch(error => console.error('Error submitting visit data:', error));
-      });
-  }
+	        function submitVisitData() {
+	            // URL del Web App di Google Apps Script
+	            const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
+	
+	            const pageURL = window.location.href; // Ottieni l'URL della pagina
+	
+	            // Recupera l'IP dell'utente usando un servizio pubblico
+	            fetch('https://www.cloudflare.com/cdn-cgi/trace')
+	                .then(response => response.text())
+	                .then(data => {
+	                    const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
+	
+	                    // Costruisci l'URL di richiesta con i parametri
+	                    const requestURL = `${scriptURL}?ip=${encodeURIComponent(ip)}&page=${encodeURIComponent(pageURL)}`;
+	
+	                    // Invia la richiesta GET al Google Apps Script
+	                    fetch(requestURL)
+	                        .then(response => response.text())
+	                        .then(data => console.log('Dati inviati con successo:', data))
+	                        .catch(error => console.error('Errore nell\'invio dei dati:', error));
+	                });
+	        }
+	
+	        // Esegui la funzione quando la pagina è caricata
+	        window.onload = function() {
+	            submitVisitData();
+	        };
+	    </script>
 
   // Call the function when the page is loaded
   window.onload = submitVisitData;
