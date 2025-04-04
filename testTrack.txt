@@ -1,2 +1,2 @@
 Test directly webapp tracking visits
-https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=192.168.1.1.&userAgent=Test&page=https://patrick2734.github.io/
+https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=192.168.1.1.&userAgent=Mozilla&page=https://patrick2734.github.io/
