@@ -42,9 +42,7 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-		  fetch("https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + 
-		            "Unknown" +  // Puoi sostituire con una funzione per ottenere l'IP
-		            "&userAgent=" + navigator.userAgent + "&page=" + window.location.href, {
+		  fetch("https://script.google.com/macros/s/AKfycbziRsRviAuJGC5ygWvM0dEhOfCrTXywJ6qMbyieG_CUW8yIMwvwrLRKSgmuPAlqmU4R/exec?ip=" + "Unknown" + "&userAgent=" + navigator.userAgent + "&page=" + window.location.href, {
 		      method: "GET",
 		      mode: "no-cors"  // Disabilita il CORS per non aspettare una risposta
 		  })
