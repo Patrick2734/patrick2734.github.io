@@ -42,34 +42,30 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-	        function submitVisitData() {
-	            // URL del Web App di Google Apps Script
-	            const scriptURL = 'https://script.google.com/macros/s/YOUR_SCRIPT_ID/exec';
-	
-	            const pageURL = window.location.href; // Ottieni l'URL della pagina
-	
-	            // Recupera l'IP dell'utente usando un servizio pubblico
-	            fetch('https://www.cloudflare.com/cdn-cgi/trace')
-	                .then(response => response.text())
-	                .then(data => {
-	                    const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
-	
-	                    // Costruisci l'URL di richiesta con i parametri
-	                    const requestURL = `${scriptURL}?ip=${encodeURIComponent(ip)}&page=${encodeURIComponent(pageURL)}`;
-	
-	                    // Invia la richiesta GET al Google Apps Script
-	                    fetch(requestURL)
-	                        .then(response => response.text())
-	                        .then(data => console.log('Dati inviati con successo:', data))
-	                        .catch(error => console.error('Errore nell\'invio dei dati:', error));
-	                });
-	        }
-	
-	        // Esegui la funzione quando la pagina è caricata
-	        window.onload = function() {
-	            submitVisitData();
-	        };
-	    </script>
+	        	const formURL = 'https://docs.google.com/forms/d/e/YOUR_FORM_ID/formResponse';
+			const pageURL = window.location.href;  // Get the current page URL
+			
+			// Fetch the user's IP address using a public API
+			fetch('https://www.cloudflare.com/cdn-cgi/trace')
+			  .then(response => response.text())
+			  .then(data => {
+			    const ip = data.split('\n').find(line => line.startsWith('ip')).split('=')[1];
+			
+			    // Prepare the data to be sent to Google Forms
+			    const formData = new FormData();
+			    formData.append('entry.YOUR_ENTRY_ID_IP', ip);  // Replace YOUR_ENTRY_ID_IP with your Google Form field ID for IP
+			    formData.append('entry.YOUR_ENTRY_ID_PAGE', pageURL); // Replace YOUR_ENTRY_ID_PAGE with your Google Form field ID for Page URL
+			
+			    // Submit the form data
+			    fetch(formURL, {
+			      method: 'POST',
+			      body: formData,
+			    })
+			    .then(response => console.log('Visit data submitted:', response))
+			    .catch(error => console.error('Error submitting visit data:', error));
+			  });
+
+	    	</script>
 
   // Call the function when the page is loaded
   window.onload = submitVisitData;
