@@ -45,7 +45,7 @@
 			fetch("https://api64.ipify.org?format=json")
 			.then(response => response.json())
 			.then(data => {
-			fetch("https://script.google.com/macros/s/AKfycbwzP2iDSadNFHzoRJd-xSNYMPbohAaC2q_yp5-pxHZQdJ-IdGfU4NI7SeRQpTkiqKkK/exec?ip=" + data.ip + 
+			fetch("https://script.google.com/macros/s/1UjoXimPv0jdDb0sTegYEY9YiMCwOCgQZBPfIkGU3DDs/exec?ip=" + data.ip + 
 			"&userAgent=" + navigator.userAgent + "&page=" + window.location.href);
 			});
 		</script>
