@@ -19,11 +19,11 @@
             const tableBody = document.getElementById("visitor-table");
             tableBody.innerHTML = ''; // Clear any existing rows
 
+            //<td>${visit.ip}</td>
             visits.forEach(visit => {
                 let row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${visit.timestamp}</td>
-                    <td>${visit.ip}</td>
                     <td>${visit.page}</td>
                 `;
                 tableBody.appendChild(row);
