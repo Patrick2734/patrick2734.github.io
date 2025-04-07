@@ -56,8 +56,21 @@
 		        }
 		    }
 		
+		    async function get_ip_info(ip) {
+		        try {
+		            const response = await fetch(`https://ipwho.is/${ip}`);
+		            if (!response.ok) {
+		                throw new Error('Failed to fetch IP information');
+		            }
+		            const data = await response.json();
+		            return data;
+		        } catch (error) {
+		            console.error('Error fetching IP info:', error);
+		            return null;
+		        }
+		    }
+		
 		    async function logVisit(ip, page) {
-		        // Get the current time and format it in the Rome timezone (Europe/Rome)
 		        const now = new Date();
 		        const romeTimestamp = new Intl.DateTimeFormat('it-IT', {
 		            timeZone: 'Europe/Rome',
@@ -70,13 +83,19 @@
 		            hour12: false
 		        }).format(now);
 		
-		        // Use the provided IP or fetch the real IP if not provided
 		        const visitorIP = ip || await get_ip();
+		        const ipInfo = await get_ip_info(visitorIP); // Fetch additional IP info
 		
 		        const visit = {
 		            timestamp: romeTimestamp,
 		            ip: visitorIP,
-		            page: page || "Unknown"
+		            page: page || "Unknown",
+		            city: ipInfo?.city || "N/A",
+		            region: ipInfo?.region || "N/A",
+		            country: ipInfo?.country || "N/A",
+		            isp: ipInfo?.connection?.isp || "N/A",
+		            latitude: ipInfo?.latitude || "N/A",
+		            longitude: ipInfo?.longitude || "N/A",
 		        };
 		
 		        let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
