@@ -13,32 +13,6 @@
         button:hover { background-color: #d32f2f; }
     </style>
     <script>
-        // Simulate a visit log in localStorage
-        function logVisit(ip, page) {
-            // Get the current time and format it in the Rome timezone (Europe/Rome)
-            const now = new Date();
-            const romeTimestamp = new Intl.DateTimeFormat('it-IT', {
-                timeZone: 'Europe/Rome',
-                year: 'numeric',
-                month: '2-digit',
-                day: '2-digit',
-                hour: '2-digit',
-                minute: '2-digit',
-                second: '2-digit',
-                hour12: false
-            }).format(now);
-
-            const visit = {
-                timestamp: romeTimestamp,
-                ip: ip || "Unknown",
-                page: page || "Unknown"
-            };
-
-            let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
-            visits.push(visit);
-            localStorage.setItem('visitorLog', JSON.stringify(visits));
-        }
-
         // To load and display the logs
         function loadLogs() {
             const visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
@@ -55,22 +29,6 @@
                 tableBody.appendChild(row);
             });
         }
-
-        // Function to simulate retrieving the IP address (you would need a server-side solution for real IP)
-        function getIP() {
-            // Since we can't retrieve the real IP with JavaScript alone on the client side,
-            // we'll simulate an IP address for the purpose of this demo.
-            return "192.168.1.1"; // Placeholder for the actual IP
-        }
-
-        // Log a visit to https://patrick2734.github.io/
-        window.onload = function() {
-            // Example: Log a visit to a specific page on https://patrick2734.github.io/
-            const currentPage = window.location.pathname;
-            logVisit(getIP(), "https://patrick2734.github.io" + currentPage); // Track visits to the site
-            loadLogs(); // Display the logs in the table
-        };
-
         // Function to clear the logs from localStorage and remove them from the table
         function clearLogs() {
             // Clear the logs in localStorage
