@@ -41,6 +41,47 @@
 		<script>
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
+		<script>
+			// Simulate a visit log in localStorage
+		        function logVisit(ip, page) {
+		            // Get the current time and format it in the Rome timezone (Europe/Rome)
+		            const now = new Date();
+		            const romeTimestamp = new Intl.DateTimeFormat('it-IT', {
+		                timeZone: 'Europe/Rome',
+		                year: 'numeric',
+		                month: '2-digit',
+		                day: '2-digit',
+		                hour: '2-digit',
+		                minute: '2-digit',
+		                second: '2-digit',
+		                hour12: false
+		            }).format(now);
+		
+		            const visit = {
+		                timestamp: romeTimestamp,
+		                ip: ip || "Unknown",
+		                page: page || "Unknown"
+		            };
+		
+		            let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
+		            visits.push(visit);
+		            localStorage.setItem('visitorLog', JSON.stringify(visits));
+		        }
+			// Function to simulate retrieving the IP address (you would need a server-side solution for real IP)
+		        function getIP() {
+		            // Since we can't retrieve the real IP with JavaScript alone on the client side,
+		            // we'll simulate an IP address for the purpose of this demo.
+		            return "192.168.1.1"; // Placeholder for the actual IP
+		        }
+		
+		        // Log a visit to https://patrick2734.github.io/
+		        window.onload = function() {
+		            // Example: Log a visit to a specific page on https://patrick2734.github.io/
+		            const currentPage = window.location.pathname;
+		            logVisit(getIP(), "https://patrick2734.github.io" + currentPage); // Track visits to the site
+		            loadLogs(); // Display the logs in the table
+		        };
+		</script>
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
