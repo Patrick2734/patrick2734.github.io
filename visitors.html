@@ -17,15 +17,22 @@
         function loadLogs() {
             const visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
             const tableBody = document.getElementById("visitor-table");
-            
             tableBody.innerHTML = ''; // Clear any existing rows
-
+        
             visits.forEach(visit => {
+                let normalizedPage = visit.page.trim().replace(/\/$/, '');
+                let pageDisplay = normalizedPage === 'https://patrick2734.github.io'
+                    ? 'https://patrick2734.github.io/index.html'
+                    : visit.page;
+        
                 let row = document.createElement('tr');
                 row.innerHTML = `
                     <td>${visit.timestamp}</td>
                     <td>${visit.ip}</td>
-                    <td>${visit.page}</td>
+                    <td>${visit.city}, ${visit.region}, ${visit.country}</td>
+                    <td>${visit.isp}</td>
+                    <td>${visit.latitude}, ${visit.longitude}</td>
+                    <td>${pageDisplay}</td>
                 `;
                 tableBody.appendChild(row);
             });
@@ -52,6 +59,9 @@
             <tr>
                 <th>Timestamp</th>
                 <th>IP Address</th>
+                <th>Location</th>
+                <th>ISP</th>
+                <th>Coordinates</th>
                 <th>Page Visited</th>
             </tr>
         </thead>
