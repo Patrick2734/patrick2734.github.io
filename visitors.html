@@ -24,7 +24,7 @@
                 row.innerHTML = `
                     <td>${visit.timestamp}</td>
                     <td>${visit.ip}</td>
-                    <td>${visit.page === 'https://patrick2734.github.io' ? 'https://patrick2734.github.io/index.html' : visit.page}</td>
+                    <td>${visit.page == 'https://patrick2734.github.io' ? 'https://patrick2734.github.io/index.html' : visit.page}</td>
                 `;
                 tableBody.appendChild(row);
             });
