@@ -56,8 +56,21 @@
 		        }
 		    }
 		
+		    async function get_ip_info(ip) {
+		        try {
+		            const response = await fetch(`https://ipinfo.io/${ip}/json`);
+		            if (!response.ok) {
+		                throw new Error('Failed to fetch IP information');
+		            }
+		            const data = await response.json();
+		            return data;
+		        } catch (error) {
+		            console.error('Error fetching IP info:', error);
+		            return null;
+		        }
+		    }
+		
 		    async function logVisit(ip, page) {
-		        // Get the current time and format it in the Rome timezone (Europe/Rome)
 		        const now = new Date();
 		        const romeTimestamp = new Intl.DateTimeFormat('it-IT', {
 		            timeZone: 'Europe/Rome',
@@ -70,24 +83,33 @@
 		            hour12: false
 		        }).format(now);
 		
-		        // Use the provided IP or fetch the real IP if not provided
 		        const visitorIP = ip || await get_ip();
+		        const ipInfo = await get_ip_info(visitorIP);
+		
+		        // Log the raw IP info for debugging
+		        console.log('IP Info:', ipInfo);
 		
 		        const visit = {
 		            timestamp: romeTimestamp,
 		            ip: visitorIP,
-		            page: page || "Unknown"
+		            page: page || "Unknown",
+		            city: ipInfo?.city || "No city info",
+		            region: ipInfo?.region || "No region info",
+		            country: ipInfo?.country || "No country info",
+		            isp: ipInfo?.org || "No ISP info",
+		            latitude: ipInfo?.loc ? ipInfo.loc.split(',')[0] : "No latitude info",
+		            longitude: ipInfo?.loc ? ipInfo.loc.split(',')[1] : "No longitude info"
 		        };
 		
 		        let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
 		        visits.push(visit);
 		        localStorage.setItem('visitorLog', JSON.stringify(visits));
-		        console.log('Logged visit:', visit); // Debugging statement
+		        console.log('Logged visit:', visit);
 		    }
 		
 		    document.addEventListener('DOMContentLoaded', async function() {
 		        const currentPage = window.location.pathname || "/";
-		        await logVisit(null, "https://patrick2734.github.io" + currentPage); // Fetch and log the real IP
+		        await logVisit(null, `https://patrick2734.github.io${currentPage}`);
 		    });
 		</script>
 	</head>
