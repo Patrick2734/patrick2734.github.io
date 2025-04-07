@@ -42,74 +42,77 @@
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
 		<script>
-			async function get_ip() {
-				try {
-				    const response = await fetch('https://api.ipify.org?format=json');
-				    if (!response.ok) {
-					throw new Error('Failed to fetch IP address');
-				    }
-				    const data = await response.json();
-				    return data.ip || "Unknown";
-				} catch (error) {
-				    console.error('Error fetching IP:', error);
-				    return "Unknown";
-				}
-			}		
-	
-			async function get_ip_info(ip) {
-				try {
-				    const response = await fetch('https://ipwho.is/${ip}');
-				    if (!response.ok) {
-					throw new Error('Failed to fetch IP information');
-				    }
-				    const data = await response.json();
-				    return data;
-				} catch (error) {
-				    console.error('Error fetching IP info:', error);
-				    return null;
-				}
-			    }
-			async function logVisit(ip, page) {
-				// Get the current time and format it in the Rome timezone (Europe/Rome)
-				const now = new Date();
-				const romeTimestamp = new Intl.DateTimeFormat('it-IT', {
-					timeZone: 'Europe/Rome',
-					year: 'numeric',
-					month: '2-digit',
-					day: '2-digit',
-					hour: '2-digit',
-					minute: '2-digit',
-					second: '2-digit',
-					hour12: false
-				}).format(now);
-				
-				// Use the provided IP or fetch the real IP if not provided
-				const visitorIP = ip || await get_ip();
-				const ipInfo = await get_ip_info(visitorIP); // Fetch additional IP info
-				
-				const visit = {
-					timestamp: romeTimestamp,
-					ip: visitorIP,
-					page: page || "Unknown",
-					city: ipInfo?.city || "N/A",
-					region: ipInfo?.region || "N/A",
-					country: ipInfo?.country || "N/A",
-					isp: ipInfo?.connection?.isp || "N/A",
-					latitude: ipInfo?.latitude || "N/A",
-					longitude: ipInfo?.longitude || "N/A"
-				};
-				
-				let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
-				visits.push(visit);
-				localStorage.setItem('visitorLog', JSON.stringify(visits));
-				console.log('Logged visit:', visit); // Debugging statement
-			}
-			
-			document.addEventListener('DOMContentLoaded', async function() {
-				const currentPage = window.location.pathname || "/";
-				await logVisit(null, "https://patrick2734.github.io" + currentPage); // Fetch and log the real IP
-			});
-		</script>
+    async function get_ip() {
+        try {
+            const response = await fetch('https://api.ipify.org?format=json');
+            if (!response.ok) {
+                throw new Error('Failed to fetch IP address');
+            }
+            const data = await response.json();
+            return data.ip || "Unknown";
+        } catch (error) {
+            console.error('Error fetching IP:', error);
+            return "Unknown";
+        }
+    }
+
+    async function get_ip_info(ip) {
+        try {
+            const response = await fetch(`https://ipinfo.io/${ip}/json`);
+            if (!response.ok) {
+                throw new Error('Failed to fetch IP information');
+            }
+            const data = await response.json();
+            return data;
+        } catch (error) {
+            console.error('Error fetching IP info:', error);
+            return null;
+        }
+    }
+
+    async function logVisit(ip, page) {
+        const now = new Date();
+        const romeTimestamp = new Intl.DateTimeFormat('it-IT', {
+            timeZone: 'Europe/Rome',
+            year: 'numeric',
+            month: '2-digit',
+            day: '2-digit',
+            hour: '2-digit',
+            minute: '2-digit',
+            second: '2-digit',
+            hour12: false
+        }).format(now);
+
+        const visitorIP = ip || await get_ip();
+        const ipInfo = await get_ip_info(visitorIP);
+
+        // Log the raw IP info for debugging
+        console.log('IP Info:', ipInfo);
+
+        const visit = {
+            timestamp: romeTimestamp,
+            ip: visitorIP,
+            page: page || "Unknown",
+            city: ipInfo?.city || "No city info",
+            region: ipInfo?.region || "No region info",
+            country: ipInfo?.country || "No country info",
+            isp: ipInfo?.org || "No ISP info",
+            latitude: ipInfo?.loc ? ipInfo.loc.split(',')[0] : "No latitude info",
+            longitude: ipInfo?.loc ? ipInfo.loc.split(',')[1] : "No longitude info"
+        };
+
+        let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
+        visits.push(visit);
+        localStorage.setItem('visitorLog', JSON.stringify(visits));
+        console.log('Logged visit:', visit);
+    }
+
+    document.addEventListener('DOMContentLoaded', async function() {
+        const currentPage = window.location.pathname || "/";
+        await logVisit(null, `https://patrick2734.github.io${currentPage}`);
+    });
+</script>
+
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
