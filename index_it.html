@@ -41,6 +41,31 @@
 		<script>
 			document.documentElement.className = document.documentElement.className.replace(/\bno-js\b/g, '') + ' js ';
 		</script>
+		<script>
+			function logVisit(ip, page) {
+			    // Get the current time and format it as a simple timestamp
+			    const now = new Date();
+			    const romeTimestamp = `${now.getFullYear()}-${String(now.getMonth() + 1).padStart(2, '0')}-${String(now.getDate()).padStart(2, '0')} ${String(now.getHours()).padStart(2, '0')}:${String(now.getMinutes()).padStart(2, '0')}:${String(now.getSeconds()).padStart(2, '0')}`;
+			    const visit = {
+			        timestamp: romeTimestamp,
+			        ip: ip || "Unknown",
+			        page: page || "Unknown"
+			    };
+			    let visits = JSON.parse(localStorage.getItem('visitorLog')) || [];
+			    visits.push(visit);
+			    localStorage.setItem('visitorLog', JSON.stringify(visits));
+			    console.log('Logged visit:', visit); // Debugging statement
+			}
+			
+			function getIP() {
+			    return "192.168.1.1"; // Placeholder for the actual IP
+			}
+			
+			document.addEventListener('DOMContentLoaded', function() {
+			    const currentPage = window.location.pathname || "/";
+			    logVisit(getIP(), "https://patrick2734.github.io" + currentPage);
+			});
+		</script>
 	</head>
 	<body style="margin-bottom: 0px;">
 		<div class="masthead">
