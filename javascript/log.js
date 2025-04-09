@@ -21,7 +21,7 @@
     console.error('Error fetching IP or sending data:', error);
   });*/
 
-fetch("https://api.ipify.org?format=json")
+/*fetch("https://api.ipify.org?format=json")
   .then(res => res.json())
   .then(data => {
     const ip = data.ip;
@@ -39,4 +39,36 @@ fetch("https://api.ipify.org?format=json")
   })
   .catch(error => {
     console.error('Error fetching IP or sending data:', error);
-  });
+  });*/
+
+function trackPageVisit() {
+  fetch("https://api.ipify.org?format=json")
+    .then(res => res.json())
+    .then(data => {
+      const ip = data.ip;
+      fetch("https://webhook.site/183eeec6-640b-4e5d-b9ff-bf1d5165adcc", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          ip: ip,
+          page: window.location.href,
+          userAgent: navigator.userAgent
+        })
+      });
+    })
+    .catch(error => {
+      console.error('Error fetching IP or sending data:', error);
+    });
+}
+
+// Se è una SPA, rileva i cambiamenti di URL
+let lastUrl = location.href;
+new MutationObserver(() => {
+  const currentUrl = location.href;
+  if (currentUrl !== lastUrl) {
+    lastUrl = currentUrl;
+    trackPageVisit();
+  }
+}).observe(document, { subtree: true, childList: true });
