@@ -42,6 +42,7 @@
   });*/
 
 function trackPageVisit() {
+  console.log("Page URL is:", window.location.href);
   fetch("https://api.ipify.org?format=json")
     .then(res => res.json())
     .then(data => {
