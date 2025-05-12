@@ -60,8 +60,16 @@
 			<div class="sidebar sticky">
 				<div itemscope="" itemtype="http://schema.org/Person">
 					<div class="author__avatar"> 
-						<video src="https://patrick2734.github.io/video/pres.mp4" class="author_avatar" alt="Patrick Fabbiani">
+						<video src="https://patrick2734.github.io/video/pres.mp4" height="200px" alt="Patrick Fabbiani" autoplay muted playsinline>
 					</div>
+					<button onclick="unmuteVideo()">🔊 Unmute</button>
+					<script>
+					  function unmuteVideo() {
+					    const video = document.getElementById('myVideo');
+					    video.muted = false;
+					    video.play();
+					  }
+					</script>
 					<div class="author__content">
 						<h3 class="author__name">Patrick Fabbiani</h3>
 						<p class="author__bio">Cybersecurity student at the Univestity of Venice</p>
