@@ -59,12 +59,12 @@
 		<div id="main" role="main">
 			<div class="sidebar sticky">
 				<div itemscope="" itemtype="http://schema.org/Person">
-					<div class="author__avatar"> 
+					<!--<div class="author__avatar"> 
 						<video id="myVideo"
 						       src="https://patrick2734.github.io/video/pres.mp4"
 						       height="300px"
 						       muted
-						       playsinline> <!--loop autoplay-->
+						       playsinline>
 						</video>
 						<button id="unmuteBtn">▶️ Play/Pause </button>
 						
@@ -72,23 +72,44 @@
 						  const video = document.getElementById('myVideo');
 						  const btn = document.getElementById('unmuteBtn');
 						
-						  /*btn.addEventListener('click', () => {
+						  btn.addEventListener('click', () => {
 						    video.muted = false;
 						    video.play();
 						    btn.style.display = 'none';
-						  });*/
-
-						  if (!isPlaying) {
-						     video.muted = false;
-						     video.play();
-						     btn.textContent = '⏸️ Pausa';
-						   } else {
-						     video.pause();
-						     btn.textContent = '▶️ Play';
-						   }
-						   isPlaying = !isPlaying;
+						  });
 						</script>
+					</div>-->
+					<div class="author__avatar"> 
+					  <video id="myVideo"
+						 src="https://patrick2734.github.io/video/pres.mp4"
+						 height="300px"
+						 muted
+						 playsinline
+						 loop>
+					  </video>
+					  
+					  <button id="unmuteBtn">▶️ Play</button>
+					
+					  <script>
+					    const video = document.getElementById('myVideo');
+					    const btn = document.getElementById('unmuteBtn');
+					
+					    let isPlaying = false;
+					
+					    btn.addEventListener('click', () => {
+					      if (!isPlaying) {
+						video.muted = false;
+						video.play();
+						btn.textContent = '⏸️ Pausa';
+					      } else {
+						video.pause();
+						btn.textContent = '▶️ Play';
+					      }
+					      isPlaying = !isPlaying;
+					    });
+					  </script>
 					</div>
+
 					<div class="author__content">
 						<h3 class="author__name">Patrick Fabbiani</h3>
 						<p class="author__bio">Cybersecurity student at the Univestity of Venice</p>
