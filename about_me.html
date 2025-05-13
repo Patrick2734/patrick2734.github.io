@@ -104,7 +104,11 @@
 						video.pause();
 						btn.textContent = '▶️ Play';
 					      }
-					      isPlaying = !isPlaying;
+					      //isPlaying = !isPlaying;
+					    });
+					    video.addEventListener('ended', () => {
+					      btn.textContent = '▶️ Play';
+					      isPlaying = false;
 					    });
 					  </script>
 					</div>
