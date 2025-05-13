@@ -66,17 +66,27 @@
 						       muted
 						       playsinline> <!--loop autoplay-->
 						</video>
-						<button id="unmuteBtn">🔊 Play </button>
+						<button id="unmuteBtn">▶️ Play/Pause </button>
 						
 						<script>
 						  const video = document.getElementById('myVideo');
 						  const btn = document.getElementById('unmuteBtn');
 						
-						  btn.addEventListener('click', () => {
+						  /*btn.addEventListener('click', () => {
 						    video.muted = false;
 						    video.play();
-						    //btn.style.display = 'none';
-						  });
+						    btn.style.display = 'none';
+						  });*/
+
+						  if (!isPlaying) {
+						     video.muted = false;
+						     video.play();
+						     btn.textContent = '⏸️ Pausa';
+						   } else {
+						     video.pause();
+						     btn.textContent = '▶️ Play';
+						   }
+						   isPlaying = !isPlaying;
 						</script>
 					</div>
 					<div class="author__content">
