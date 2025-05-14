@@ -80,18 +80,52 @@
 						</script>
 					</div>-->
 					<div class="author__avatar"> 
-					  <video id="myVideo"
-						 src="https://patrick2734.github.io/video/pres.mp4"
+					  <video id="myVideo_B"
+						 src="https://patrick2734.github.io/video/pres_Bachelor.mp4"
 						 height="300px"
 						 muted
 						 playsinline>
 					  </video>
 					  
-					  <button id="unmuteBtn">▶️ Play</button>
+					  <button id="unmuteBtn_B">▶️ Play</button>
 					
 					  <script>
-					    const video = document.getElementById('myVideo');
-					    const btn = document.getElementById('unmuteBtn');
+					    const video = document.getElementById('myVideo_B');
+					    const btn = document.getElementById('unmuteBtn_B');
+					
+					    let isPlaying = false;
+					
+					    btn.addEventListener('click', () => {
+					      if (!isPlaying) {
+						video.muted = false;
+						video.play();
+						btn.textContent = '⏸️ Pause';
+					      } else {
+						video.pause();
+						btn.textContent = '▶️ Play';
+					      }
+					      isPlaying = !isPlaying;
+					    });
+					    video.addEventListener('ended', () => {
+					      btn.textContent = '▶️ Play';
+					      isPlaying = false;
+					    });
+					  </script>
+					</div>
+
+					<div class="author__avatar"> 
+					  <video id="myVideo_M"
+						 src="https://patrick2734.github.io/video/pres_Master.mp4"
+						 height="300px"
+						 muted
+						 playsinline>
+					  </video>
+					  
+					  <button id="unmuteBtn_M">▶️ Play</button>
+					
+					  <script>
+					    const video = document.getElementById('myVideo_M');
+					    const btn = document.getElementById('unmuteBtn_M');
 					
 					    let isPlaying = false;
 					
