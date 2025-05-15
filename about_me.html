@@ -90,24 +90,24 @@
 					  <button id="unmuteBtn_B">▶️ Play</button>
 					
 					  <script>
-					    const video = document.getElementById('myVideo_B');
-					    const btn = document.getElementById('unmuteBtn_B');
+					    const videoB = document.getElementById('myVideo_B');
+					    const btnB = document.getElementById('unmuteBtn_B');
 					
 					    let isPlaying = false;
 					
-					    btn.addEventListener('click', () => {
+					    btnB.addEventListener('click', () => {
 					      if (!isPlaying) {
-						video.muted = false;
-						video.play();
-						btn.textContent = '⏸️ Pause';
+						videoB.muted = false;
+						videoB.play();
+						btnB.textContent = '⏸️ Pause';
 					      } else {
-						video.pause();
-						btn.textContent = '▶️ Play';
+						videoB.pause();
+						btnB.textContent = '▶️ Play';
 					      }
 					      isPlaying = !isPlaying;
 					    });
-					    video.addEventListener('ended', () => {
-					      btn.textContent = '▶️ Play';
+					    videoB.addEventListener('ended', () => {
+					      btnB.textContent = '▶️ Play';
 					      isPlaying = false;
 					    });
 					  </script>
@@ -124,24 +124,24 @@
 					  <button id="unmuteBtn_M">▶️ Play</button>
 					
 					  <script>
-					    const video = document.getElementById('myVideo_M');
-					    const btn = document.getElementById('unmuteBtn_M');
+					    const videoM = document.getElementById('myVideo_M');
+					    const btnM = document.getElementById('unmuteBtn_M');
 					
 					    let isPlaying = false;
 					
-					    btn.addEventListener('click', () => {
+					    btnM.addEventListener('click', () => {
 					      if (!isPlaying) {
-						video.muted = false;
-						video.play();
-						btn.textContent = '⏸️ Pause';
+						videoM.muted = false;
+						videoM.play();
+						btnM.textContent = '⏸️ Pause';
 					      } else {
-						video.pause();
-						btn.textContent = '▶️ Play';
+						videoM.pause();
+						btnM.textContent = '▶️ Play';
 					      }
 					      isPlaying = !isPlaying;
 					    });
-					    video.addEventListener('ended', () => {
-					      btn.textContent = '▶️ Play';
+					    videoM.addEventListener('ended', () => {
+					      btnM.textContent = '▶️ Play';
 					      isPlaying = false;
 					    });
 					  </script>
