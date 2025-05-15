@@ -93,10 +93,10 @@
 					    const videoB = document.getElementById('myVideo_B');
 					    const btnB = document.getElementById('unmuteBtn_B');
 					
-					    let isPlaying = false;
+					    let isPlayingB = false;
 					
 					    btnB.addEventListener('click', () => {
-					      if (!isPlaying) {
+					      if (!isPlayingB) {
 						videoB.muted = false;
 						videoB.play();
 						btnB.textContent = '⏸️ Pause';
@@ -104,11 +104,11 @@
 						videoB.pause();
 						btnB.textContent = '▶️ Play';
 					      }
-					      isPlaying = !isPlaying;
+					      isPlayingB = !isPlayingB;
 					    });
 					    videoB.addEventListener('ended', () => {
 					      btnB.textContent = '▶️ Play';
-					      isPlaying = false;
+					      isPlayingB = false;
 					    });
 					  </script>
 					</div>
@@ -127,10 +127,10 @@
 					    const videoM = document.getElementById('myVideo_M');
 					    const btnM = document.getElementById('unmuteBtn_M');
 					
-					    let isPlaying = false;
+					    let isPlayingM = false;
 					
 					    btnM.addEventListener('click', () => {
-					      if (!isPlaying) {
+					      if (!isPlayingM) {
 						videoM.muted = false;
 						videoM.play();
 						btnM.textContent = '⏸️ Pause';
@@ -138,11 +138,11 @@
 						videoM.pause();
 						btnM.textContent = '▶️ Play';
 					      }
-					      isPlaying = !isPlaying;
+					      isPlayingM = !isPlayingM;
 					    });
 					    videoM.addEventListener('ended', () => {
 					      btnM.textContent = '▶️ Play';
-					      isPlaying = false;
+					      isPlayingM = false;
 					    });
 					  </script>
 					</div>
