@@ -59,26 +59,6 @@
 		<div id="main" role="main">
 			<div class="sidebar sticky">
 				<div itemscope="" itemtype="http://schema.org/Person">
-					<!--<div class="author__avatar"> 
-						<video id="myVideo"
-						       src="https://patrick2734.github.io/video/pres.mp4"
-						       height="300px"
-						       muted
-						       playsinline>
-						</video>
-						<button id="unmuteBtn">▶️ Play/Pause </button>
-						
-						<script>
-						  const video = document.getElementById('myVideo');
-						  const btn = document.getElementById('unmuteBtn');
-						
-						  btn.addEventListener('click', () => {
-						    video.muted = false;
-						    video.play();
-						    btn.style.display = 'none';
-						  });
-						</script>
-					</div>-->
 					<div class="author__avatar"> 
 					  <video id="myVideo_B"
 						 src="https://patrick2734.github.io/video/pres_Bachelor.mp4"
@@ -90,25 +70,25 @@
 					  <button id="unmuteBtn_B">▶️ Play</button>
 					
 					  <script>
-					    const video = document.getElementById('myVideo_B');
-					    const btn = document.getElementById('unmuteBtn_B');
+					    const videoB = document.getElementById('myVideo_B');
+					    const btnB = document.getElementById('unmuteBtn_B');
 					
-					    let isPlaying = false;
+					    let isPlayingB = false;
 					
-					    btn.addEventListener('click', () => {
-					      if (!isPlaying) {
-						video.muted = false;
-						video.play();
-						btn.textContent = '⏸️ Pause';
+					    btnB.addEventListener('click', () => {
+					      if (!isPlayingB) {
+						videoB.muted = false;
+						videoB.play();
+						btnB.textContent = '⏸️ Pause';
 					      } else {
-						video.pause();
-						btn.textContent = '▶️ Play';
+						videoB.pause();
+						btnB.textContent = '▶️ Play';
 					      }
-					      isPlaying = !isPlaying;
+					      isPlayingB = !isPlayingB;
 					    });
-					    video.addEventListener('ended', () => {
-					      btn.textContent = '▶️ Play';
-					      isPlaying = false;
+					    videoB.addEventListener('ended', () => {
+					      btnB.textContent = '▶️ Play';
+					      isPlayingB = false;
 					    });
 					  </script>
 					</div>
@@ -124,29 +104,29 @@
 					  <button id="unmuteBtn_M">▶️ Play</button>
 					
 					  <script>
-					    const video = document.getElementById('myVideo_M');
-					    const btn = document.getElementById('unmuteBtn_M');
+					    const videoM = document.getElementById('myVideo_M');
+					    const btnM = document.getElementById('unmuteBtn_M');
 					
-					    let isPlaying = false;
+					    let isPlayingM = false;
 					
-					    btn.addEventListener('click', () => {
-					      if (!isPlaying) {
-						video.muted = false;
-						video.play();
-						btn.textContent = '⏸️ Pause';
+					    btnM.addEventListener('click', () => {
+					      if (!isPlayingM) {
+						videoM.muted = false;
+						videoM.play();
+						btnM.textContent = '⏸️ Pause';
 					      } else {
-						video.pause();
-						btn.textContent = '▶️ Play';
+						videoM.pause();
+						btnM.textContent = '▶️ Play';
 					      }
-					      isPlaying = !isPlaying;
+					      isPlayingM = !isPlayingM;
 					    });
-					    video.addEventListener('ended', () => {
-					      btn.textContent = '▶️ Play';
-					      isPlaying = false;
+					    videoM.addEventListener('ended', () => {
+					      btnM.textContent = '▶️ Play';
+					      isPlayingM = false;
 					    });
 					  </script>
 					</div>
-
+					
 					<div class="author__content">
 						<h3 class="author__name">Patrick Fabbiani</h3>
 						<p class="author__bio">Cybersecurity student at the Univestity of Venice</p>
