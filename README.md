@@ -39,6 +39,11 @@ Files
 - projects.html, projects_it.html: Project showcases, with an Italian version.
 - school.html, school_it.html: Education-related pages, with an Italian version.
 
+Practicalites
+
+I added some functionalities to users which visit the site. On the left side of the pages there are three important links to connect with me like the email, the linkedin profile and the github profile.
+By clicking on the email, your email will open with the recipient set to my email so you can write directly without having to manually enter the recipient.
+
 Deployment
 The website is deployed using GitHub Pages , which automatically builds and hosts the site whenever changes are pushed to the main branch.
 
