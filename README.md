@@ -26,20 +26,18 @@ Directories
 - images: Holds image files used throughout the website.
 - javascript: Contains JavaScript files for interactivity.
 - stylesheet: CSS files for styling.
-- video: Video files if any are used on the site.
+- video: Video files used on the site.
 
 Files
 - README.md: This file, providing an overview and instructions.
-- ability.html, ability_it.html: Likely related to abilities or skills, with an Italian version.
-- about_me.html, about_me_it.html: About me pages, with an Italian version.
+- ability.html, ability_it.html: Page related to abilities or skills, with an Italian version.
+- about_me.html, about_me_it.html: Page that describe myself, with an Italian version.
 - about_page.html, about_page_it.html: Detailed about pages, with an Italian version.
-- index.html, indexTest.html, index_it.html: Main homepage files, with test and Italian versions.
+- index.html, index_it.html: Main homepage files, with Italian versions.
 - personalInterests.html, personalInterests_it.html: Pages showcasing personal interests, with an Italian version.
 - praticalExp.html, praticalExp_it.html: Practical experience pages, with an Italian version.
 - projects.html, projects_it.html: Project showcases, with an Italian version.
 - school.html, school_it.html: Education-related pages, with an Italian version.
-- testTrack.txt: Likely a tracking or testing file.
-- visitors.html: Page for visitor statistics or analytics.
 
 Deployment
 The website is deployed using GitHub Pages , which automatically builds and hosts the site whenever changes are pushed to the main branch.
